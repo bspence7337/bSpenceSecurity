@@ -1,12 +1,12 @@
 ---
 layout: page
-title: About the Theme
+title: About the This Blog
 tags: [about, Jekyll]
 date: 2017-07-03
 comments: false
 ---
     
-<center>Hi, I am bSpence. I am a novice security analyst for a fortune 500 company. After almost a decade in the US Army and another in the private sector, I am here to have some fun. I do not take this too seriously, so I hope you do not either.</center>
+<center>Hi, I am bSpence. I am a novice security analyst for a fortune 500 company. After almost a decade in the US Army and another in the private sector, I am here to have some fun. I do not take this too seriously and I hope you do not either.. So sit back, relax, and lets n0ob out.</center>
 
 ## What you will find here
 * Security Write-ups
