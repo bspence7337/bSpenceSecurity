@@ -1,7 +1,7 @@
 # Site
-title:              bSpence-the-n0ob
+title:              bSpence Security
 bio:                'I do not pretend to know anything, but I know people who do.'
-description:        "Just some massive n0obage here, nothing special."
+description:        "This is the place where I teach myself how to hack."
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/logo.jpg'
@@ -26,7 +26,7 @@ sass:
   style:            compressed
 
 # Comments
-disqus_shortname:   bspence7337
+disqus_shortname:   bSpence7337
 
 # Social
 # if you don't have any of social below, comment the line.
@@ -37,7 +37,7 @@ disqus_shortname:   bspence7337
   #ad-client:
   #ad-slot:
 #bing-verify:
-#email:
+email:		    bSpence7337@gmail.com
 twitter:            bspence7337
 #facebook:           username
 github-url:         bspence7337
