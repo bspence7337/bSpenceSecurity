@@ -14,13 +14,13 @@ I've seen several different methods of persistence that redteamers (and blackhat
 
 One of the major limitations to this type of persistence is that you have to rely on some user interaction to generate your trigger and get the shell (ie. the user has to start an application). However, if you pick an application like Outlook or other commonly used standard applications, this can be a nice way to hide your shell popping payloads in plain sight, hidden from the user, and even better, hidden from the blue team.
 
-I recently had an engagement with @SpectorOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
+I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
 <<screenshot of your taskbar>>
 
 ## Disclaimer
 As I introduce this concept, I apologize if anyone has already explored this method and might think I am blatantly plagurizing their work, I swear it is not my style. 
 
-## Introduce Sticky LNKz
+## Introducing Sticky LNKz
 The epiphany I had was that users often customize their user experience by creating Start Menu and Taskbar shortcuts to execute their favorited applications. The other thing users do is create desktop shortcuts, but I will talk about why the Start Menu and Taskbar are much more covert friendly. These shortcuts get saved on the filesystem as .LNK files since that is essentially what a shortcut is, a link to an executable.
 
 ## The Payload
