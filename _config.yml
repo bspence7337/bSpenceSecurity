@@ -9,6 +9,7 @@ background:         'assets/img/background-big.jpg'
 tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
 locale:             en_US
 url:                https://bspence7337.github.io/bSpenceSecurity
+future: true
 
 # Jekyll
 permalink:          /:title/
