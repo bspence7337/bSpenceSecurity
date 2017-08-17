@@ -19,6 +19,10 @@ I've seen several different methods of persistence that redteamers (and blackhat
 One of the major limitations to this type of persistence is that you have to rely on some user interaction to generate your trigger and get the shell (ie. the user has to start an application). However, if you pick an application like Outlook or other commonly used standard applications, this can be a nice way to hide your shell popping payloads in plain sight, hidden from the user, and even better, hidden from the blue team.
 
 I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
+<figure>
+	<a href="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_b.jpg"><img src="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg"></a>
+	<figcaption><a href="http://www.flickr.com/photos/80901381@N04/7758832526/" title="Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr">Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr</a>.</figcaption>
+</figure>
 
 <figure>
 	<img src="/assets/img/taskbar.png">
@@ -42,7 +46,7 @@ $link.Arguments = $Arguments
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-![Google Chrome.Lnk](/assets/img/google_lnkz.png)
+google here
 Ex: "Google Chrome.lnk"
 {: .mycenter} 
 ## Snippet Step-by-Step
@@ -68,7 +72,7 @@ The IconLocation here is essential to our .lnk remaining covert and not tipping 
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-![IconLocation](/assets/img/icon_path.png)
+icon here
 Ex: "IconLocation from Chrome.exe"
 {: .mycenter} 
 ## Save Location
@@ -86,7 +90,7 @@ Windows 10/7
 ## Why No Desktop Love?
 As I indicated before you *could* generate a lnk and put it on the user's desktop, but there is some OPSEC considerations that tip off the user. When hovering over the Desktop shortcut the "Location:<PATH_TO_EXECUTABLE>" is shown on hover. This will get you busted pretty quick if the user is paying attention. The taskbar and startmenu location for some reason do not have the same hovers, so the user will not really be tipped off unless he goes exploring the file locations above.
 
-![Location Hover](/assets/img/location_hover.png)
+location here
 Ex: "Location: powershell"
 {: .mycenter}
 ## To-Do's
