@@ -19,9 +19,6 @@ I've seen several different methods of persistence that redteamers (and blackhat
 One of the major limitations to this type of persistence is that you have to rely on some user interaction to generate your trigger and get the shell (ie. the user has to start an application). However, if you pick an application like Outlook or other commonly used standard applications, this can be a nice way to hide your shell popping payloads in plain sight, hidden from the user, and even better, hidden from the blue team.
 
 I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
-	<figcaption><a href="http://www.flickr.com/photos/80901381@N04/7758832526/" title="Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr">Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr</a>.</figcaption>
-</figure>
-
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/taskbar.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/taskbar.png"></a>
 	<figcaption>Ex: "My Current Taskbar Situation"</figcaption>
