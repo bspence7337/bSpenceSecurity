@@ -22,7 +22,7 @@ I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @eni
 
 <figure>
 	<img src="/assets/img/taskbar.png">
-	<figcaption>Ex: "My Current Taskbar Situation"{: .mycenter}</figcaption>
+	<figcaption>Ex: "My Current Taskbar Situation"</figcaption>
 </figure>
 
 ## Introducing Sticky LNKz
