@@ -25,7 +25,7 @@ I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @eni
 </figure>
 
 <figure>
-	<img src="/assets/img/taskbar.png">
+	<img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/taskbar.png">
 	<figcaption>Ex: "My Current Taskbar Situation"</figcaption>
 </figure>
 
