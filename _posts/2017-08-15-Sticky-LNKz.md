@@ -21,9 +21,9 @@ One of the major limitations to this type of persistence is that you have to rel
 I recently had an engagement with @SpecterOps in which @bluscreenofjeff and @enigma0x3 introduced to me some tradecraft payload cradles in which they use .LNK and .HTA files as links in their phishing emails to get initial breach shells. I don't like to name drop, but I'd be kind of a jerk without mentioning someone like @SubTee who's been the cradle Jedi master for a year or two now. Anyways, after playing with the cradles and thinking about how my blue team might react something slapped me in the face as I looked at the taskbar.
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/taskbar.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/taskbar.png"></a>
-	<figcaption>Ex: "My Current Taskbar Situation"</figcaption>
 </figure>
-
+Ex: "My Current Taskbar Situation"
+{: .mycenter}
 ## Introducing Sticky LNKz
 The epiphany I had was that users often customize their user experience by creating Start Menu and Taskbar shortcuts to execute their favorited applications. The other thing users do is create desktop shortcuts, but I will talk about why the Start Menu and Taskbar are much more covert friendly. These shortcuts get saved on the filesystem as .LNK files since that is essentially what a shortcut is, a link to an executable.
 
@@ -43,8 +43,9 @@ $link.Save()
 {% endhighlight %}
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"></a>
-	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
 </figure>
+Ex: "Google Chrome.lnk"
+{: .mycenter}
 ## Snippet Step-by-Step
 The LNKName identifies the save location of the lnk you're generating. You want this to be named exactly like the a taskbar or start menu lnk might look. The BinaryPath establishes powershell.exe as the executable to run instead of the path to chrome.exe
 {% highlight html %}
@@ -70,8 +71,9 @@ $link.Save()
 {% endhighlight %}
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"></a>
-	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
 </figure> 
+Ex: "Google Chrome.lnk"
+{: .mycenter}
 ## Save Location
 You really have two options when generating the link. Locally on your lab machine and then uploading it to the below locations on the filesystem, or be bold and upload it directly to the compromised host in the start menu or taskbar locations.
 ## Task Bar
@@ -89,7 +91,7 @@ As I indicated before you *could* generate a lnk and put it on the user's deskto
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"></a>
 </figure> 
-Ex: "Google Chrome.lnk"
+Ex: "Location: powershell"
 {: .mycenter} 
 ## To-Do's
 I'd really like to eventually have the time to put this in a Cobaltstrike Aggressor script. I've already started a preliminary script, but I've been a bit stuck on how to approach it. I figured I could use some common shortcut types like Google, IE, Outlook, etc.. but having aggressor tie it to a hosted payload has given me some problems. I know it can be done, but I just haven't had the time to dig into it.
