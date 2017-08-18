@@ -41,7 +41,7 @@ $link.Arguments = $Arguments
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-Here is what it looks like
+Here is what it looks like:
 {: .mycenter}
 <figure> 
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"></a>
@@ -71,7 +71,8 @@ The IconLocation here is essential to our .lnk remaining covert and not tipping 
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-Here is what browsing toe chrome.exe for an icon selection looks like
+Here is what browsing to chrome.exe for an icon selection looks like:
+{: .mycenter}
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"></a>
 </figure> 
