@@ -86,10 +86,12 @@ Windows 10/7
 {% endhighlight %}
 ## Why No Desktop Love?
 As I indicated before you *could* generate a lnk and put it on the user's desktop, but there is some OPSEC considerations that tip off the user. When hovering over the Desktop shortcut the "Location:<PATH_TO_EXECUTABLE>" is shown on hover. This will get you busted pretty quick if the user is paying attention. The taskbar and startmenu location for some reason do not have the same hovers, so the user will not really be tipped off unless he goes exploring the file locations above.
-<figure class="half" >
+<figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"></a>
-	<figcaption align="center" >Ex: "Google Chrome.lnk"</figcaption>
+	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
 </figure> 
+Ex: "Google Chrome.lnk"
+{: .mycenter} 
 ## To-Do's
 I'd really like to eventually have the time to put this in a Cobaltstrike Aggressor script. I've already started a preliminary script, but I've been a bit stuck on how to approach it. I figured I could use some common shortcut types like Google, IE, Outlook, etc.. but having aggressor tie it to a hosted payload has given me some problems. I know it can be done, but I just haven't had the time to dig into it.
 The other nice feature I might do is create a powershell script with user-defined input that will generate the link of your choice, but again, this is on my list of things to do.
