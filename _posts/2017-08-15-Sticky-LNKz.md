@@ -72,7 +72,7 @@ $link.Save()
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"></a>
 </figure> 
-Ex: "Google Chrome.lnk"
+Ex: "Icon's for Chrome.exe"
 {: .mycenter}
 ## Save Location
 You really have two options when generating the link. Locally on your lab machine and then uploading it to the below locations on the filesystem, or be bold and upload it directly to the compromised host in the start menu or taskbar locations.
