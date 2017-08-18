@@ -88,7 +88,6 @@ Windows 10/7
 As I indicated before you *could* generate a lnk and put it on the user's desktop, but there is some OPSEC considerations that tip off the user. When hovering over the Desktop shortcut the "Location:<PATH_TO_EXECUTABLE>" is shown on hover. This will get you busted pretty quick if the user is paying attention. The taskbar and startmenu location for some reason do not have the same hovers, so the user will not really be tipped off unless he goes exploring the file locations above.
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"></a>
-	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
 </figure> 
 Ex: "Google Chrome.lnk"
 {: .mycenter} 
