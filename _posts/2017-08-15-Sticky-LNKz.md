@@ -43,7 +43,7 @@ $link.Save()
 {% endhighlight %}
 Here is what it looks like:
 {: .mycenter}
-<figure>
+<figure> 
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"></a>
 </figure>
 Ex: "Google Chrome.lnk"
@@ -98,7 +98,7 @@ Ex: "Location: powershell"
 {: .mycenter} 
 ## To-Do's
 I'd really like to eventually have the time to put this in a Cobaltstrike Aggressor script. I've already started a preliminary script, but I've been a bit stuck on how to approach it. I figured I could use some common shortcut types like Google, IE, Outlook, etc.. but having aggressor tie it to a hosted payload has given me some problems. I know it can be done, but I just haven't had the time to dig into it.
-The other nice feature I might do is create a powershell script with user-defined input that will generate the link of your choice, but again, this is on my list of things to do.
+The other nice feature I might do is create a powershell script with to generate a lnk of your choice, but again, this is on my list of things to do.
 
 ## Summary
 There are many ways to establish persistence and while the most desired persistence is automated without user intervention sometimes you have to use covert methods like I outlined in this post. I realize it isn't the most sophisticated, but in a pinch it is handy tradecraft like this that might get you out of a bind if defenders start to crack down on known persistence locations. With a little situational awareness and some well placed .lnk's you might be able to sneak by even the best defenders.
