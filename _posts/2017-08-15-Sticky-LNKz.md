@@ -41,9 +41,10 @@ $link.Arguments = $Arguments
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-google here
-Ex: "Google Chrome.lnk"
-{: .mycenter} 
+<figure>
+	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"></a>
+	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
+</figure>
 ## Snippet Step-by-Step
 The LNKName identifies the save location of the lnk you're generating. You want this to be named exactly like the a taskbar or start menu lnk might look. The BinaryPath establishes powershell.exe as the executable to run instead of the path to chrome.exe
 {% highlight html %}
@@ -67,9 +68,10 @@ The IconLocation here is essential to our .lnk remaining covert and not tipping 
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
-icon here
-Ex: "IconLocation from Chrome.exe"
-{: .mycenter} 
+<figure>
+	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/icon_path.png"></a>
+	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
+</figure> 
 ## Save Location
 You really have two options when generating the link. Locally on your lab machine and then uploading it to the below locations on the filesystem, or be bold and upload it directly to the compromised host in the start menu or taskbar locations.
 ## Task Bar
@@ -84,15 +86,15 @@ Windows 10/7
 {% endhighlight %}
 ## Why No Desktop Love?
 As I indicated before you *could* generate a lnk and put it on the user's desktop, but there is some OPSEC considerations that tip off the user. When hovering over the Desktop shortcut the "Location:<PATH_TO_EXECUTABLE>" is shown on hover. This will get you busted pretty quick if the user is paying attention. The taskbar and startmenu location for some reason do not have the same hovers, so the user will not really be tipped off unless he goes exploring the file locations above.
-
-location here
-Ex: "Location: powershell"
-{: .mycenter}
+<figure>
+	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/location_hover.png"></a>
+	<figcaption>Ex: "Google Chrome.lnk"</figcaption>
+</figure> 
 ## To-Do's
 I'd really like to eventually have the time to put this in a Cobaltstrike Aggressor script. I've already started a preliminary script, but I've been a bit stuck on how to approach it. I figured I could use some common shortcut types like Google, IE, Outlook, etc.. but having aggressor tie it to a hosted payload has given me some problems. I know it can be done, but I just haven't had the time to dig into it.
 The other nice feature I might do is create a powershell script with user-defined input that will generate the link of your choice, but again, this is on my list of things to do.
 
 ## Summary
-There are many ways to establish persistence and while the most desired persistence is automated without user intervention sometimes you have to use covert methods like I outlined in this post. I realize it isn't the most sophisticated, but in a pinch it is handy tradecraft like this that might get you out of a bind if defenders start to crack down on known persistence locations.
+There are many ways to establish persistence and while the most desired persistence is automated without user intervention sometimes you have to use covert methods like I outlined in this post. I realize it isn't the most sophisticated, but in a pinch it is handy tradecraft like this that might get you out of a bind if defenders start to crack down on known persistence locations. The idea is to think of creative ways to hide your payloads in usable and relevant places so that you can maintain a foothold without getting caught.
 
 If anyone has any comment or feedback regarding this post please look me up on twitter @bSpence7337. Thanks!
