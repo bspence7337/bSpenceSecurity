@@ -41,6 +41,7 @@ $link.Arguments = $Arguments
 $link.IconLocation = "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe, 0";
 $link.Save()
 {% endhighlight %}
+Here is what it looks like:
 <figure>
 	<a href="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"><img src="https://bspence7337.github.io/bSpenceSecurity/assets/img/google_lnkz.png"></a>
 </figure>
@@ -98,6 +99,6 @@ I'd really like to eventually have the time to put this in a Cobaltstrike Aggres
 The other nice feature I might do is create a powershell script with user-defined input that will generate the link of your choice, but again, this is on my list of things to do.
 
 ## Summary
-There are many ways to establish persistence and while the most desired persistence is automated without user intervention sometimes you have to use covert methods like I outlined in this post. I realize it isn't the most sophisticated, but in a pinch it is handy tradecraft like this that might get you out of a bind if defenders start to crack down on known persistence locations. The idea is to think of creative ways to hide your payloads in usable and relevant places so that you can maintain a foothold without getting caught.
+There are many ways to establish persistence and while the most desired persistence is automated without user intervention sometimes you have to use covert methods like I outlined in this post. I realize it isn't the most sophisticated, but in a pinch it is handy tradecraft like this that might get you out of a bind if defenders start to crack down on known persistence locations. With a little situational awareness and some well placed .lnk's you might be able to sneak by even the best defenders.
 
 If anyone has any comment or feedback regarding this post please look me up on twitter @bSpence7337. Thanks!
