@@ -13,7 +13,7 @@ As a user in a corporate environment, what is one of the first things you do? Af
 As I introduce this concept, I apologize if anyone has already explored this method and might think I am blatantly plagurizing their work, I swear it is not my style. 
 
 ## User-Drive Persistence
-**Subj: "bSpence love his shells"**
+### Subj: "bSpence love his shells"
 I've seen several different methods of persistence that redteamers (and blackhats) often use to repop a shell on a device that gets shutdown everyday and rebooted the next morning. Senspost's <a href="https://www.twitter.com/_staaldraad">@_staaldraad</a> has a handy tool I was introduced to at Blackhat called <a href="https://github.com/sensepost/ruler">**"Ruler"**</a>. The original concept was once you had credz you could set up an outlook rule to pop a shell whenever needed by sending a triggered email that would delete itself and run a payload via an external webdev share. Genius!
 
 One of the major limitations to this type of persistence is that you have to rely on some user interaction to generate your trigger and get the shell (ie. the user has to start an application). However, if you pick an application like Outlook or other commonly used standard applications, this can be a nice way to hide your shell popping payloads in plain sight, hidden from the user, and even better, hidden from the blue team.
